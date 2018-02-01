@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block body %}
+    {{ block.super }}
+{% endblock %}
+{% block anonymous %}
+    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+{% endblock %}

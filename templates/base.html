@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Twitter{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="https://www.djangoproject.com/s/img/icon-touch.e4872c4da341.png">
+    <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+</head>
+<body background-color=red>
+    <div class="container">
+        <div class="jumbotron">
+            <img class="header" src="{% static 'logo.jpg' %}">
+            <h1 class="twitter">Twitter</h1>
+            <p>Twitter is a popular social-network!</p>
+        </div>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Twitter</a>
+            </div>
+            <ul class="nav navbar-nav">
+                {% block subjects %}
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/post">Post</a></li>
+                    <li><a href="/api">Api</a></li>
+                {% endblock %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% block anonymous %}
+                    <li><a href="/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% endblock %}
+            </ul>
+        </div>
+    </nav>
+    <div class="my-form-class">
+        {% block body %}
+            {% for post in posts %}
+                <div class="container-fluid" style="border-style:solid;border-radius:20px">
+                    <div class="card">
+                        {% if post.pic %}
+                            <img class="card-img-top img-responsive" src="/{{ post.pic.location }}" alt="Card image">
+                        {% endif %}
+                        <div class="card-body">
+                            <a href="/posts/{{ post.id }}" target="_blank"><h4 class="card-title">{{ post.user.user.username }}</h4></a>
+                            <p class="card-text">{{ post.text }}</p>
+                            <a href="/user/{{ post.user.user.username }}" target="_blank" class="btn btn-primary">See Profile</a>
+                            {% if post.forward %}
+                                <a href="/posts/{{ post.forward.id }}" target="_blank"><p class="card-text">forwarded</p></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <br><br><br>
+            {% endfor %}
+            <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="?page={{ pagep }}">Previous</a></li>
+            {% for i in range %}
+                {% if page != i %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}"> {{ i }} </a>
+                        {% else %}
+                        <li class="page-item active"><a class="page-link" href="?page={{ i }}"> {{ i }} </a>
+                {% endif %}
+            {% endfor %}
+            <li class="page-item"><a class="page-link" href="?page={{ pagen }}">Next</a></li>
+            </ul>
+        {% endblock %}
+    </div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+</body>
+</html>

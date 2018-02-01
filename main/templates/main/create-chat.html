@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <form class="form-group" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Title : </label>
+        <input class="form-control" name="title" id="title">
+        <label for="pic">Photo : </label>
+        <input type="file" class="form-control" name="pic" id="pic">
+        <label for="des">Description : </label>
+        <textarea class="form-control" name="des" id="des"></textarea>
+        <input class="form-control" type="submit" value="create">
+    </form>
+    {{ e }}<br>
+    {% if c %}
+        <a href="/get-messages/{{ c }}">messages</a>
+    {% endif %}
+{% endblock %}
+
+{% block anonymous %}
+    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+{% endblock %}

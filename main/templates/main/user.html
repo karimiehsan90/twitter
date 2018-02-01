@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+    Name : {{ profile.name }}<br>
+    Des : {{ profile.bio }}<br>
+    Location : {{ profile.location }}<br>
+    Gender : {{ profile.gender }}<br>
+    Created : {{ profile.time }}<br>
+    Username : {{ profile.user.username }}<br>
+    Email : {{ profile.user.email }}<br>
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        <input type="hidden" name="follow" value="f">
+        <input type="submit" value="follow" class="form-control">
+    </form><br>
+    {{ block.super }}
+{% endblock %}
+{% block subjects %}
+    {{ block.super }}
+{% endblock %}
+{% block anonymous %}
+    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+{% endblock %}

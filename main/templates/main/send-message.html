@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <form class="form-group" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="text">Text : </label>
+        <textarea name="text" class="form-control" id="text"></textarea>
+        <label for="pic">Pic : </label>
+        <input name="pic" class="form-control" id="pic" type="file" accept="image/jpeg, image/png">
+        <input class="form-control" type="submit" name="send">
+    </form>
+    {{ e }}
+{% endblock %}

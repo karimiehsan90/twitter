@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% for m in messages %}
+        {{ m.user }}<br>
+        {% if m.photo %}
+            <img src="/{{ m.photo.location }}" class="img-responsive" alt="Cinque Terre"><br>
+        {% endif %}
+        {{ m.text }}
+        <hr>
+    {% endfor %}
+    {{ e }}
+{% endblock %}

@@ -1,0 +1,18 @@
+h1 {
+	color: black;
+	font-size: 300%;
+}
+.header {
+	height : 50px;
+}
+.jumbotron {
+	background-image: url("/static/logo.jpg");
+	/*background-size: contain;*/
+}
+.twitter {
+	margin-top: 40px;
+}
+.my-form-class {
+	margin-left: 20%;
+	margin-right: 20%;
+}

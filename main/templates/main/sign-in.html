@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username :</label>
+            <input name="username" class="form-control" id="username"><br>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password :</label>
+            <input type="password" class="form-control" id="pwd" name="password"><br>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="submit" value="Sign in">
+        </div>
+    </form>
+{% endblock %}
+{% block anonymous %}
+    <li><a href="/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+{% endblock %}
+{% block subjects %}
+    <li><a href="/">Register</a></li>
+    <li class="active"><a href="/login">Login</a></li>
+{% endblock %}

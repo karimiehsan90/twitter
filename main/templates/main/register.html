@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username :</label>
+            <input type="text" class="form-control" id="username" name="username"><br>
+        </div>
+        <div class="form-group">
+            <label for="email">Email : </label>
+            <input type="text" class="form-control" id="email" name="email"><br>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password :</label>
+            <input type="password" class="form-control" name="password" id="pwd"><br>
+        </div>
+        <div class="form-group">
+            <label for="rpwd">re-Password :</label>
+            <input type="password" class="form-control" name="re-password" id="rpwd"><br>
+        </div>
+        <div class="form-group">
+            <label for="name">Name : </label>
+            <input type="text" class="form-control" name="name" id="name"><br>
+        </div>
+        <div class="form-group">
+            <label for="bio">Bio : </label>
+            <textarea name="bio" class="form-control" id="bio"></textarea><br>
+        </div>
+        <div class="form-group">
+            <label for="location">Location : </label>
+            <input type="text" class="form-control" name="location" id="location"><br>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender : </label>
+            <select class="form-control" id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone : </label>
+            <input type="number" class="form-control" name="phone" id="phone"><br>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="form-control" value="Register">
+        </div>
+    </form><br>
+        {{ e }}
+{% endblock %}
+{% block subjects %}
+    <li class="active"><a href="/">Register</a></li>
+    <li><a href="/login">Login</a></li>
+{% endblock %}
+{% block anonymous %}
+    <li><a href="/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+{% endblock %}

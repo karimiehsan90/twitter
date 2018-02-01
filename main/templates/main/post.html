@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="text">Text :</label>
+            <textarea class="form-control" id="text" name="text"></textarea><br>
+        </div>
+        <div class="form-group">
+            <label for="pic">Photo of post :</label>
+            <input class="form-control" id="pic" name="pic" type="file" accept="image/jpeg, image/png">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="form-control" value="send"><br>
+        </div>
+    </form>
+        {{ e }}
+{% endblock %}
+{% block anonymous %}
+    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+{% endblock %}
+{% block subjects %}
+    <li><a href="/">Home</a></li>
+    <li  class="active"><a href="/post">Post</a></li>
+    <li><a href="/api">Api</a></li>
+{% endblock %}

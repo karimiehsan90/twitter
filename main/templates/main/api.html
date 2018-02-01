@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block subjects %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/post">Post</a></li>
+    <li class="active"><a href="/api">Api</a></li>
+{% endblock %}
+{% block anonymous %}
+    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+{% endblock %}
+{% block body %}
+    <h1>Api Documentation</h1>
+    The api is based on post method and the only parameter of get method is "format" that you can set it to <b>json</b><br>
+    The api is for all pages!<br>
+    Below is the documentations and parameters you should set for work with this api!<br>
+    <h2>Register</h2>
+    url : /?format=json<br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Parameters</th>
+                <th>Values</th>
+                <th>Optional</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>username</td>
+            <td>a-z and A-Z and 0-9 </td>
+            <td>- </td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>without limit!!!</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>re-password</td>
+            <td>the user must fill this same as password</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>user's email address</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>without limit!!!</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>location</td>
+            <td>without limit!!!</td>
+            <td>+</td>
+        </tr>
+        <tr>
+            <td>gender</td>
+            <td>male or female</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>the phone number with 11 digits</td>
+            <td>-</td>
+        </tr>
+        </tbody>
+    </table>
+    return value : a json of user created or the error occured<br>
+    example : <br>
+    <code>{ "ok" : "true" , "result" : { "id" : 10,"username" : "ehskarimi" , "email" : "ehs.karimi@webmail.sbu.ac.ir" , "name" : "Ehsan" , "location" : "Quchan" , "gender" : "male"}}</code>
+    <h2>Login</h2>
+    url : /login/?format=json<br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Parameters</th>
+                <th>Values</th>
+                <th>Optional</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>username</td>
+            <td></td>
+            <td>- </td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td></td>
+            <td>-</td>
+        </tr>
+        </tbody>
+    </table>
+    return value : a json of user logged in or the error occured<br>
+    example : <br>
+    <code>{ "ok" : "true" , "result" : { "id" : 10,"username" : "ehskarimi" , "email" : "ehs.karimi@webmail.sbu.ac.ir" , "name" : "Ehsan" , "location" : "Quchan" , "gender" : "male"}}</code>
+    <h2>Home</h2>
+    url : /?format=json<br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Parameters</th>
+                <th>Optional</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>username</td>
+            <td>- </td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>-</td>
+        </tr>
+        </tbody>
+    </table>
+    return value : a json of posts or the error occured<br>
+    example : <br>
+    <code>{ "ok" : "true" , "result" : ['{ "id" : 36, "text" : "#test" , "user" : { "id" : 8,"username" : "karimiehsan90" , "email" : "karimiehsan901@gmail.com" , "name" : "Ehsan" , "location" : "Quchan" , "gender" : "male"}, "forward" : 35 }', '{ "id" : 33, "text" : "Test" , "user" : { "id" : 8,"username" : "karimiehsan90" , "email" : "karimiehsan901@gmail.com" , "name" : "Ehsan" , "location" : "Quchan" , "gender" : "male"} }'] , "pages" : 1}</code>
+    <h2>New post</h2>
+    url : /post/?format=json<br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Parameters</th>
+                <th>Value</th>
+                <th>Optional</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>username</td>
+            <td></td>
+            <td>- </td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td></td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>text</td>
+            <td>Text of post</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>pic</td>
+            <td>Picture of post(upload this to server)</td>
+            <td>+</td>
+        </tr>
+        </tbody>
+    </table>
+    return value : a json of post created or the error occured<br>
+    example : <br>
+    <code>{ "ok" : "true" , "result" : { "id" : 38, "text" : "test" , "user" : { "id" : 9,"username" : "ehs.karimi" , "email" : "ehs.karimi@mail.sbu.ac.ir" , "name" : "Ehsan" , "location" : "Quchan" , "gender" : "male"} } }</code>
+
+{% endblock %}

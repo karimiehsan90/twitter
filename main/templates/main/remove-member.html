@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <form class="form-group" method="post">
+        {% csrf_token %}
+        <label for="usr">Username : </label>
+        <input name="user" class="form-control" id="usr">
+        <input class="form-control" type="submit" name="remove">
+    </form>
+    {{ e }}
+{% endblock %}
